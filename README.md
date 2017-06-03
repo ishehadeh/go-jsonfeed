@@ -4,7 +4,6 @@ Basic implementation of the [JSON Feed](https://jsonfeed.org/) specs for go.
 
 Usage
 ------------
-------------
 First install the package with `go get github.com/IanS5/go-jsonfeed`.
 
 To get a feed use `feed,err := jsonfeed.OpenFeed(feed_url)`.
@@ -16,7 +15,6 @@ Feeds can also be used with the `io.Writer` and `io.Reader` interfaces with thei
 All names in the JSONFeed struct have the same words as the json fields, but in CammelCase with the First letter capitalized.
 
 Example
----------
 ---------
 ```go
 package main
