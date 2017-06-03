@@ -12,7 +12,7 @@ Feeds implement the `http.Handler` interface, so to serve a feed just use `http.
 
 Feeds can also be used with the `io.Writer` and `io.Reader` interfaces with their `Write(io.Writer)` and `Read(io.Reader)` methods.
 
-All names in the JSONFeed struct have the same words as the json fields, but in CammelCase with the First letter capitalized, URL and ID are always all uppercase. e.g. `home_page_url` -> ```HomePageURL```
+All names in the JSONFeed struct have the same words as the json fields, but in CammelCase with the First letter capitalized, URL and ID are always all uppercase. e.g. `home_page_url` = `HomePageURL`
 Example
 ---------
 ```go
