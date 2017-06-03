@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"strconv"
 
@@ -12,14 +11,8 @@ import (
 )
 
 func (jf *JSONFeed) Read(r io.Reader) error {
-	data, err := ioutil.ReadAll(r)
-	if err != nil {
-		return err
-	}
-	err = json.Unmarshal(data, &jf)
-	if err != nil {
-		return err
-	}
+	dec := json.NewDecoder(r)
+	dec.Decode(&jf)
 	missing, err := jf.GetMissing()
 	if err != nil {
 		return err
@@ -37,12 +30,9 @@ func (jf *JSONFeed) Write(w io.Writer) error {
 	if len(missing) > 0 {
 		return fmt.Errorf("Feed missing field(s): %v", missing)
 	}
-	data, err := json.Marshal(jf)
-	if err != nil {
-		return err
-	}
-	_, err = w.Write(data)
-	return err
+	enc := json.NewEncoder(w)
+	enc.SetEscapeHTML(false)
+	return enc.Encode(jf)
 }
 
 //getMissingRecursive Checks if struct has all required fields recursively
