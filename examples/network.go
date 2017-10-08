@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/IanS5/go-jsonfeed"
+	jsonfeed "github.com/IanS5/go-jsonfeed"
 )
 
 func main() {
@@ -12,5 +12,6 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	feed.PublishText("my-unique-id", "Hello World!", "Hello from https://github.com/IanS5/go-jsonfeed!")
 	log.Fatal(http.ListenAndServe(":8080", feed))
 }
