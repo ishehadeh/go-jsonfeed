@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"path"
 	"strconv"
 	"time"
 
@@ -32,7 +33,7 @@ func (jf *JSONFeed) Write(w io.Writer) error {
 		return fmt.Errorf("Feed missing field(s): %v", missing)
 	}
 	enc := json.NewEncoder(w)
-	enc.SetEscapeHTML(false)
+	enc.SetEscapeHTML(true)
 	return enc.Encode(jf)
 }
 
@@ -98,7 +99,7 @@ func CreateJSONFeed(title string, description string) (feed *JSONFeed) {
 }
 
 //PublishText publishes a new plain text item to a JSON Feed, the publish date is time.Now()
-func (jf *JSONFeed) PublishText(id string, title string, text string, attachments ...Attachment) (i *Item) {
+func (jf *JSONFeed) PublishText(id string, title string, text string, attachments ...*Attachment) (i *Item) {
 	jf.Items = append(jf.Items, &Item{
 		ID:            id,
 		Title:         title,
@@ -110,7 +111,7 @@ func (jf *JSONFeed) PublishText(id string, title string, text string, attachment
 }
 
 //PublishHTML publishes a new html text item to a JSON Feed, the publish date is time.Now()
-func (jf *JSONFeed) PublishHTML(id string, title string, textHTML string, attachments ...Attachment) (i *Item) {
+func (jf *JSONFeed) PublishHTML(id string, title string, textHTML string, attachments ...*Attachment) (i *Item) {
 	jf.Items = append(jf.Items, &Item{
 		ID:            id,
 		Title:         title,
@@ -119,4 +120,34 @@ func (jf *JSONFeed) PublishHTML(id string, title string, textHTML string, attach
 		DatePublished: time.Now().Format("2006/01/02|15:04:05"),
 	})
 	return jf.Items[len(jf.Items)-1]
+}
+
+//NewImage creates a new image attachment
+func NewImage(title string, url string) (at *Attachment) {
+	imgType := path.Ext(url)
+	return &Attachment{
+		Title:    title,
+		URL:      url,
+		MimeType: "image/" + imgType[1:],
+	}
+}
+
+//NewVideo creates a new video attachment
+func NewVideo(title string, url string) (at *Attachment) {
+	vidType := path.Ext(url)
+	return &Attachment{
+		Title:    title,
+		URL:      url,
+		MimeType: "video/" + vidType[1:],
+	}
+}
+
+//NewAudio creates a new adio attachment
+func NewAudio(title string, url string) (at *Attachment) {
+	audType := path.Ext(url)
+	return &Attachment{
+		Title:    title,
+		URL:      url,
+		MimeType: "audio/" + audType[1:],
+	}
 }

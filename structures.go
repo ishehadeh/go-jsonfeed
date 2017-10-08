@@ -24,20 +24,20 @@ type Attachment struct {
 
 //Item a single item in a feed
 type Item struct {
-	ID            string       `json:"id,omitempty" feed:"required"`
-	URL           string       `json:"url,omitempty" feed:"optional"`
-	ExternalURL   string       `json:"external_url,omitempty" feed:"optional"`
-	Title         string       `json:"title,omitempty" feed:"optional"`
-	ContentHTML   string       `json:"content_html,omitempty" feed:"optional"`
-	ContentText   string       `json:"content_text,omitempty" feed:"optional"`
-	Summary       string       `json:"summary,omitempty" feed:"optional"`
-	Image         string       `json:"image,omitempty" feed:"optional"`
-	BannerImage   string       `json:"banner_image,omitempty" feed:"optional"`
-	DatePublished string       `json:"date_published,omitempty" feed:"optional"`
-	DateModified  string       `json:"date_modified,omitempty" feed:"optional"`
-	Author        Author       `json:"author,omitempty" feed:"optional"`
-	Tags          []string     `json:"tags,omitempty" feed:"optional"`
-	Attachments   []Attachment `json:"attachments,omitempty" feed:"optional"`
+	ID            string        `json:"id,omitempty" feed:"required"`
+	URL           string        `json:"url,omitempty" feed:"optional"`
+	ExternalURL   string        `json:"external_url,omitempty" feed:"optional"`
+	Title         string        `json:"title,omitempty" feed:"optional"`
+	ContentHTML   string        `json:"content_html,omitempty" feed:"optional"`
+	ContentText   string        `json:"content_text,omitempty" feed:"optional"`
+	Summary       string        `json:"summary,omitempty" feed:"optional"`
+	Image         string        `json:"image,omitempty" feed:"optional"`
+	BannerImage   string        `json:"banner_image,omitempty" feed:"optional"`
+	DatePublished string        `json:"date_published,omitempty" feed:"optional"`
+	DateModified  string        `json:"date_modified,omitempty" feed:"optional"`
+	Author        Author        `json:"author,omitempty" feed:"optional"`
+	Tags          []string      `json:"tags,omitempty" feed:"optional"`
+	Attachments   []*Attachment `json:"attachments,omitempty" feed:"optional"`
 }
 
 //JSONFeed The structure of a JSON Feed
