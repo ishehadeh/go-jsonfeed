@@ -52,7 +52,7 @@ type JSONFeed struct {
 	Icon        string   `json:"icon,omitempty" feed:"required"`
 	Favicon     string   `json:"favicon,omitempty" feed:"required"`
 	Author      Author   `json:"author,omitempty" feed:"required"`
-	Items       []Item   `json:"items,omitempty" feed:"required"`
+	Items       []*Item  `json:"items,omitempty" feed:"required"`
 	Expired     bool     `json:"expired,omitempty" feed:"required"`
 	Hubs        []string `json:"hubs,omitempty" feed:"optional"`
 }
