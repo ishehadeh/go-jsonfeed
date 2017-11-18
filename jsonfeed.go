@@ -33,7 +33,7 @@ func (jf *JSONFeed) Write(w io.Writer) error {
 		return fmt.Errorf("Feed missing field(s): %v", missing)
 	}
 	enc := json.NewEncoder(w)
-	enc.SetEscapeHTML(true)
+	enc.SetEscapeHTML(false)
 	return enc.Encode(jf)
 }
 
