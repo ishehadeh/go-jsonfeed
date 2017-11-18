@@ -70,6 +70,7 @@ func (jf JSONFeed) GetMissing() (missing []string, err error) {
 }
 
 func (jf *JSONFeed) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
+	rw.Header().Add("Content-Type", "application/json; charset=utf-8")
 	jf.Write(rw)
 }
 
