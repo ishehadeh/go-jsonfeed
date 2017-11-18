@@ -100,26 +100,26 @@ func CreateJSONFeed(title string, description string) (feed *JSONFeed) {
 
 //PublishText publishes a new plain text item to a JSON Feed, the publish date is time.Now()
 func (jf *JSONFeed) PublishText(id string, title string, text string, attachments ...*Attachment) (i *Item) {
-	jf.Items = append(jf.Items, &Item{
+	jf.Items = append([]*Item{&Item{
 		ID:            id,
 		Title:         title,
 		ContentText:   text,
 		Attachments:   attachments,
 		DatePublished: time.Now(),
-	})
-	return jf.Items[len(jf.Items)-1]
+	}}, jf.Items...)
+	return jf.Items[0]
 }
 
 //PublishHTML publishes a new html text item to a JSON Feed, the publish date is time.Now()
 func (jf *JSONFeed) PublishHTML(id string, title string, textHTML string, attachments ...*Attachment) (i *Item) {
-	jf.Items = append(jf.Items, &Item{
+	jf.Items = append([]*Item{&Item{
 		ID:            id,
 		Title:         title,
 		ContentHTML:   textHTML,
 		Attachments:   attachments,
 		DatePublished: time.Now(),
-	})
-	return jf.Items[len(jf.Items)-1]
+	}}, jf.Items...)
+	return jf.Items[0]
 }
 
 //NewImage creates a new image attachment
