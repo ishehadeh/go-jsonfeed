@@ -105,7 +105,7 @@ func (jf *JSONFeed) PublishText(id string, title string, text string, attachment
 		Title:         title,
 		ContentText:   text,
 		Attachments:   attachments,
-		DatePublished: time.Now().Format("2006/01/02|15:04:05"),
+		DatePublished: time.Now(),
 	})
 	return jf.Items[len(jf.Items)-1]
 }
@@ -117,7 +117,7 @@ func (jf *JSONFeed) PublishHTML(id string, title string, textHTML string, attach
 		Title:         title,
 		ContentHTML:   textHTML,
 		Attachments:   attachments,
-		DatePublished: time.Now().Format("2006/01/02|15:04:05"),
+		DatePublished: time.Now(),
 	})
 	return jf.Items[len(jf.Items)-1]
 }

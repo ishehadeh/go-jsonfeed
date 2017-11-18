@@ -1,5 +1,7 @@
 package jsonfeed
 
+import "time"
+
 //Author Basic information on the feed's author
 type Author struct {
 	Name   string `json:"name,omitempty"`
@@ -33,8 +35,8 @@ type Item struct {
 	Summary       string        `json:"summary,omitempty" feed:"optional"`
 	Image         string        `json:"image,omitempty" feed:"optional"`
 	BannerImage   string        `json:"banner_image,omitempty" feed:"optional"`
-	DatePublished string        `json:"date_published,omitempty" feed:"optional"`
-	DateModified  string        `json:"date_modified,omitempty" feed:"optional"`
+	DatePublished time.Time     `json:"date_published,omitempty" feed:"optional"`
+	DateModified  time.Time     `json:"date_modified,omitempty" feed:"optional"`
 	Author        Author        `json:"author,omitempty" feed:"optional"`
 	Tags          []string      `json:"tags,omitempty" feed:"optional"`
 	Attachments   []*Attachment `json:"attachments,omitempty" feed:"optional"`
