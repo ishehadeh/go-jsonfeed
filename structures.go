@@ -46,15 +46,15 @@ type Item struct {
 type JSONFeed struct {
 	Version     string   `json:"version,omitempty" feed:"required"`
 	Title       string   `json:"title,omitempty" feed:"required"`
-	HomePageURL string   `json:"home_page_url,omitempty" feed:"required"`
-	FeedURL     string   `json:"feed_url,omitempty" feed:"required"`
-	Description string   `json:"description,omitempty" feed:"required"`
-	UserComment string   `json:"user_comment,omitempty" feed:"required"`
-	NextURL     string   `json:"next_url,omitempty" feed:"required"`
-	Icon        string   `json:"icon,omitempty" feed:"required"`
-	Favicon     string   `json:"favicon,omitempty" feed:"required"`
-	Author      Author   `json:"author,omitempty" feed:"required"`
-	Items       []*Item  `json:"items,omitempty" feed:"required"`
-	Expired     bool     `json:"expired,omitempty" feed:"required"`
+	HomePageURL string   `json:"home_page_url,omitempty" feed:"optional"`
+	FeedURL     string   `json:"feed_url,omitempty" feed:"optional"`
+	Description string   `json:"description,omitempty" feed:"optional"`
+	UserComment string   `json:"user_comment,omitempty" feed:"optional"`
+	NextURL     string   `json:"next_url,omitempty" feed:"optional"`
+	Icon        string   `json:"icon,omitempty" feed:"optional"`
+	Favicon     string   `json:"favicon,omitempty" feed:"optional"`
+	Author      Author   `json:"author,omitempty" feed:"optional"`
+	Items       []*Item  `json:"items,omitempty" feed:"optional"`
+	Expired     bool     `json:"expired,omitempty" feed:"optional"`
 	Hubs        []string `json:"hubs,omitempty" feed:"optional"`
 }
